@@ -1,0 +1,1 @@
+This will be where we put client stuff (Android and Web)
