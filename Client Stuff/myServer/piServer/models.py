@@ -4,7 +4,7 @@ from django.db import models
 class User(models.Model):
     username = models.CharField(max_length=18)
     password = models.CharField(max_length=18)
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     sQuestion = models.CharField(max_length=100)
     sAnswer = models.CharField(max_length=50)
     lastAddress = models.IPAddressField()
