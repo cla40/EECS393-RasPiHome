@@ -1,5 +1,13 @@
-# ignore the sttings file
-/My\ Client/myServer/myServer/settings.py
+# ignore the settings file
+/Client\ Stuff/myServer/myServer/settings.py
 
 # ignore binary files
 *.pyc
+
+# ignore eclipse files
+.project
+.pydevproject
+
+# ignore database
+/Client\ Stuff/myServer/myDatabase
+/Client\ Stuff/myServer/C:\\Python27\\myServer\\myDatabase
