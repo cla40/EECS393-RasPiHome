@@ -42,6 +42,7 @@ class Building(models.Model):
     
 class Outlet(models.Model):
     outletName = models.CharField(max_length=25)
+    lastChanged = models.DateTimeField()
     buildingID = models.ForeignKey('Building') #Foriegn Key
     state = models.BooleanField()
     
