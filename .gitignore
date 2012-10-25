@@ -1,0 +1,5 @@
+# ignore the sttings file
+/My\ Client/myServer/myServer/settings.py
+
+# ignore binary files
+*.pyc
