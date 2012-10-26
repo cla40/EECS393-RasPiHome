@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
+class UserProfile(models.Model):
     SECURITY_QUESTIONS = (
         (1, 'What is your mother\'s maiden name?'),
         (2, 'What city were you born in?'),
@@ -9,19 +10,13 @@ class User(models.Model):
         (4, 'What is the name of your first pet?'),
         (5, 'In what city was your high school?'),
     )
-    
-    username = models.CharField(max_length=18)
-    password = models.CharField(max_length=18)
-    email = models.EmailField(max_length=100, unique=True)
+    user = models.ForeignKey(User, unique=True)
     sQuestion = models.IntegerField(max_length=1, choices=SECURITY_QUESTIONS);
     sAnswer = models.CharField(max_length=50)
     lastAddress = models.IPAddressField()
     
-    def __unicode__(self):
-        return self.username
-    
 class Alarm(models.Model):
-    username = models.CharField(max_length=18) #Creators Username
+    creator = models.CharField(max_length=18) #Creators Username
     buildingID = models.ForeignKey('Building') #Foreign Key
     outletID = models.ForeignKey('Outlet') #Foreign Key
     alarmName = models.CharField(max_length=25)
@@ -35,7 +30,7 @@ class Alarm(models.Model):
     
 class Building(models.Model):
     buildingname = models.CharField(max_length=18)
-    userID = models.ForeignKey('User') #Foreign Key
+    owner = models.ForeignKey('UserProfile') #Foreign Key
     
     def __unicode__(self):
         return self.buildingname
