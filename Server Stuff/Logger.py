@@ -21,7 +21,7 @@ class logger(bID):
         a = Alarm.objects.filter(alarmID=aID)
         f = open(location, "a")
         timeStamp = datetime.datetime.now()
-        f.wrtie(timeStamp)
+        f.write(timeStamp)
         f.write(a)
         f.close()
     def log(address,user,msg,flag):
@@ -38,22 +38,17 @@ class logger(bID):
         f.write(user)
         f.write(msg)
         timeStamp = datetime.datetime.now()
-        f.wrtie(timeStamp)
+        f.write(timeStamp)
         f.write("\n")
         f.close()
     def inputInvalid(msg):
         f = open (location, "a")
-        f.write("The follwing input was invalid")
+        f.write("The following input was invalid")
         f.write(msg)
         f.close()
     def killServer(address, user,msg,flag):
-        self.log(address,user,msg,flag)
+        self.log(address,user,"Server Died remotely",0)
         sys.exit("The Website Server was killed remotely")
         #change server status to Down or OFF
         #serverstatus flag in a file??? or the DB?
-    def checkServerStatus():
-        #check if the status is Down or OFF
-        if(server == 0):
-            sys.exit("The Website Client Server is off... Shutting down")            
-        
     
