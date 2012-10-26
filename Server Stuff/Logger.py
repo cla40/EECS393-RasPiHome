@@ -1,7 +1,7 @@
-from C:\Users\Cimara\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import User
-from C:\Users\Cimara\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Bulding
-from C:\Users\Cimara\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Outlet
-from C:\Users\Cimara\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Alarm
+from C:\Users\Anthony\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import User
+from C:\Users\Anthony\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Building
+from C:\Users\Anthony\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Outlet
+from C:\Users\Anthony\Documents\GitHub\EECS393-RasPiHome\Client Stuff\myServer\piServer\models.py import Alarm
 from django.db import models
 from datetime import datetime
 import sys
@@ -10,18 +10,26 @@ import sys
 #and do the following line of code:
 #   log =  imp.load_source('Logger', 'logger.py location')
 #This should allow logger to be used easily. by making calls like:
-#   log.log(0.0.0.0,bob,"I just turned something on.",0)
+#   log.log("0.0.0.0",bob,"I just turned something on.",0)
 #in the code. These logging functions should not be seen by the user unless the Log.txt
 #file is opened.
 
 class logger(bID):
     #location will just be directly on the Pi when we can do that.
-    location = "C:\Users\cimara\Desktop\test.txt,r+" #this is the location I currently am using
-     def logAlarm(aID):
+    location = "C:\Users\Anthony\Desktop\test.txt,r+" #this is the location I currently am using
+     def logAlarm(aID, wasFlipped):
+		#note whether it was changed or not
         a = Alarm.objects.filter(alarmID=aID)
         f = open(location, "a")
         timeStamp = datetime.datetime.now()
-        f.wrtie(timeStamp)
+        f.write(timeStamp)
+        f.write(a)
+        f.close()
+	def logTimer(aID):
+        a = Alarm.objects.filter(alarmID=aID)
+        f = open(location, "a")
+        timeStamp = datetime.datetime.now()
+        f.write(timeStamp)
         f.write(a)
         f.close()
     def log(address,user,msg,flag):
@@ -38,12 +46,12 @@ class logger(bID):
         f.write(user)
         f.write(msg)
         timeStamp = datetime.datetime.now()
-        f.wrtie(timeStamp)
+        f.write(timeStamp)
         f.write("\n")
         f.close()
     def inputInvalid(msg):
         f = open (location, "a")
-        f.write("The follwing input was invalid")
+        f.write("The following input was invalid")
         f.write(msg)
         f.close()
     def killServer(address, user,msg,flag):
