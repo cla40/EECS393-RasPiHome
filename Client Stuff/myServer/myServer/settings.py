@@ -7,12 +7,16 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+AUTH_PROFILE_MODULE = "piServer.UserProfile"    # tells auth user where to look for the additional user profile info
+
+LOGIN_REDIRECT_URL = "/piServer" # the base url to redirect to after login
+
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'C:\Python27\myServer\myDatabase',                      # Or path to database file if using sqlite3.
+        'NAME': 'myDatabase',            # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -106,7 +110,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/Users/apo/School/EECS393-RasPiHome/Client Stuff/templates"
+    "/Users/apo/School/EECS393-RasPiHome/ClientStuff/templates"
 )
 
 INSTALLED_APPS = (
