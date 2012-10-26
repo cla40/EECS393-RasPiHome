@@ -22,7 +22,7 @@ class Alarm(models.Model):
     alarmName = models.CharField(max_length=25)
     startTime = models.DateTimeField(blank = True, null = True)
     endTime = models.DateTimeField()
-    desiredState = models.BooleanField(blank = True, null = True)
+    desiredState = models.NullBooleanField(blank = True, null = True)
     #For a timer startTime is NULL and endTime will be used to calculate the duration
     
     def __unicode__(self):
