@@ -1,6 +1,8 @@
 import handler.py
 import sys
-import logger.py
+#import Logger.py
+import os
+import sqlite3
 
 buildingID = sys.argv[1]
 h = handler(buildingID)
