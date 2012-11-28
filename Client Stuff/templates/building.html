@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{building}}{% endblock %}
+
+{% block content %}
+
+<h1>{{building}}</h1>
+
+{% if outlets %}
+
+  Select a outlet to view more information:
+  <ul>
+      {% for o in outlets %}
+          <li><a href="outlets/{{o.id}}" >{{ o.outletName }}</a> : 
+            {% if o.state %}
+              On
+            {% else %}
+              Off
+            {% endif %}
+          </li>
+      {% endfor %}
+  </ul>
+{% else %}
+    <p>You do not own any buildings at this time.</p>
+{% endif %}
+{% endblock %}
