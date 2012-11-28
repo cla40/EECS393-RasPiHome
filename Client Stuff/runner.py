@@ -1,12 +1,12 @@
-import handler.py
 import sys
 #import Logger.py
 import os
 import sqlite3
-
-buildingID = sys.argv[1]
-h = handler(buildingID)
+import imp
+import handler
+#h = handler()
+#handler = imp.load_source('Handler','C:\Users\Cimara\Documents\GitHub\EECS393-RasPiHome\Client Stuff\handler.py')
 yes = 1
 while(yes == 1):
-    h.checkAlarms()
-    log.checkServerStatus()
+    handler.checkAlarms()
+    #log.checkServerStatus()
