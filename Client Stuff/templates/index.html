@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock %}
-
+{% block title %}Buildings{% endblock %}
 
 {% block content %}
-{% if user_list %}
-    <ul>
-    {% for up in user_list %}
-        <li>{{ up.user.username }}</li>
-    {% endfor %}
-    </ul>
+
+<h1>Buildings</h1>
+
+{% if building_list %}
+
+  Select a building to view more information:
+  <ul>
+      {% for b in building_list %}
+          <li><a href="buildings/{{b.id}}" >{{ b.buildingname }}</a></li>
+      {% endfor %}
+  </ul>
 {% else %}
-    <p>No users are available.</p>
+    <p>You do not own any buildings at this time.</p>
 {% endif %}
 {% endblock %}

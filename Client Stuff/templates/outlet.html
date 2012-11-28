@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{outlet}}{% endblock %}
+
+{% block content %}
+
+<h1>{{outlet}}</h1>
+<b>State: </b>
+{% if outlet.state %}
+  On
+{% else %}
+  Off
+{% endif %}
+
+{% if alarms %}
+<h4>Alarms:</h4>
+  <ul>
+      {% for a in alarms %}
+          <li>{{ a.alarmName }} :
+            <ul>
+              <li>Creator: {{ a.creator }}
+              {% if a.startTime %}
+                <li>Start time: {{ a.startTime }}</li>
+              {% endif %}
+                <li> End time: {{ a.endTime }}</li>
+            </ul> 
+          </li>
+      {% endfor %}
+  </ul>
+{% else %}
+    <p>There are no alarms set for this outlet.</p>
+{% endif %}
+{% endblock %}
